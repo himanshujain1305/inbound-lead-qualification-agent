@@ -1,0 +1,76 @@
+lead_id,first_name,last_name,company,job_title,company_size,industry,pain_point,budget_range,timeline,source,lead_score,fit_level,qualification_reason,recommended_next_action,draft_follow_up_email
+1,Sarah,Mitchell,Northstar Logistics,VP Operations,500-1000,Logistics,Manual lead routing and slow sales follow-up,$25k-$50k,This quarter,Website form,100,High,Company size suggests a real sales/ops team with enough volume. Lead has decision-maker or senior influencer title. Budget range indicates potential buying capacity. Timeline suggests near-term intent.,Prioritize for sales outreach within 24 hours.,"Subject: Quick idea for Northstar Logistics
+
+Hi Sarah,
+
+I noticed that your team may be dealing with: Manual lead routing and slow sales follow-up.
+
+A simple lead qualification workflow could help your team quickly identify which inbound leads need immediate sales attention, which leads should go into nurture, and which ones are lower priority.
+
+This looks like the kind of workflow where faster lead qualification could save your team meaningful time.
+
+Would you be open to a quick 15-minute conversation this week?
+
+Best,
+Himanshu
+"
+2,David,Chen,BrightPath Consulting,Founder,1-10,Consulting,Needs a simple CRM but limited budget,Under $5k,No clear timeline,LinkedIn,25,Low,"Very small company, likely limited buying capacity. Lead has decision-maker or senior influencer title. Budget appears limited. Timeline is vague or long-term.","Keep in CRM, but do not prioritize immediate sales time.","Subject: Quick idea for BrightPath Consulting
+
+Hi David,
+
+I noticed that your team may be dealing with: Needs a simple CRM but limited budget.
+
+A simple lead qualification workflow could help your team quickly identify which inbound leads need immediate sales attention, which leads should go into nurture, and which ones are lower priority.
+
+Even if this is not urgent right now, having a simple qualification process can help when inbound volume increases.
+
+Happy to stay connected if this becomes more relevant later.
+
+Best,
+Himanshu
+"
+3,Anita,Rao,MedCore Analytics,Director of Marketing,200-500,Healthcare,Too much time spent qualifying inbound demo requests,$50k-$100k,Next 30 days,Webinar,100,High,Company size suggests a real sales/ops team with enough volume. Lead has decision-maker or senior influencer title. Budget range indicates potential buying capacity. Timeline suggests near-term intent.,Prioritize for sales outreach within 24 hours.,"Subject: Quick idea for MedCore Analytics
+
+Hi Anita,
+
+I noticed that your team may be dealing with: Too much time spent qualifying inbound demo requests.
+
+A simple lead qualification workflow could help your team quickly identify which inbound leads need immediate sales attention, which leads should go into nurture, and which ones are lower priority.
+
+This looks like the kind of workflow where faster lead qualification could save your team meaningful time.
+
+Would you be open to a quick 15-minute conversation this week?
+
+Best,
+Himanshu
+"
+4,Michael,Turner,LocalPrint Co,Owner,11-50,Printing,Wants better email templates for follow-up,Under $5k,This year,Website form,10,Low,"Smaller company, possible fit but likely lower urgency. Budget appears limited. Timeline is vague or long-term.","Keep in CRM, but do not prioritize immediate sales time.","Subject: Quick idea for LocalPrint Co
+
+Hi Michael,
+
+I noticed that your team may be dealing with: Wants better email templates for follow-up.
+
+A simple lead qualification workflow could help your team quickly identify which inbound leads need immediate sales attention, which leads should go into nurture, and which ones are lower priority.
+
+Even if this is not urgent right now, having a simple qualification process can help when inbound volume increases.
+
+Happy to stay connected if this becomes more relevant later.
+
+Best,
+Himanshu
+"
+5,Jessica,Brooks,ScaleOps AI,Head of Revenue,100-200,SaaS,Sales team wastes time researching every inbound lead,$25k-$50k,Next 60 days,Referral,100,High,Company size suggests a real sales/ops team with enough volume. Lead has decision-maker or senior influencer title. Budget range indicates potential buying capacity. Timeline suggests near-term intent.,Prioritize for sales outreach within 24 hours.,"Subject: Quick idea for ScaleOps AI
+
+Hi Jessica,
+
+I noticed that your team may be dealing with: Sales team wastes time researching every inbound lead.
+
+A simple lead qualification workflow could help your team quickly identify which inbound leads need immediate sales attention, which leads should go into nurture, and which ones are lower priority.
+
+This looks like the kind of workflow where faster lead qualification could save your team meaningful time.
+
+Would you be open to a quick 15-minute conversation this week?
+
+Best,
+Himanshu
+"
