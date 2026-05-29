@@ -1,0 +1,26 @@
+{
+  "_comment": "Demo payload only. Use this to test the Inbound Lead Webhook node in n8n. No real credentials or PII.",
+  "lead_id": "lead_001",
+  "first_name": "Jessica",
+  "last_name": "Brooks",
+  "company": "ScaleOps AI",
+  "job_title": "Head of Revenue",
+  "company_size": "100-200",
+  "industry": "SaaS",
+  "pain_point": "Sales team wastes time researching every inbound lead",
+  "budget_range": "$25k-$50k",
+  "timeline": "Next 60 days",
+  "source": "Referral",
+  "submitted_at": "2026-05-29T10:14:00Z",
+  "qualification": {
+    "lead_score": 88,
+    "fit_level": "High",
+    "qualification_reason": "Director-level buyer at a SaaS company with clear budget, near-term timeline, and a pain point that maps directly to the product.",
+    "recommended_next_action": "Assign to AE for discovery call within 24 hours",
+    "draft_follow_up_email": {
+      "to": "jbrooks@scaleopsai.example.com",
+      "subject": "Quick follow-up from ScaleOps AI inquiry",
+      "body": "Hi Jessica,\n\nThanks for reaching out. Based on what you shared about your team spending too much time on inbound lead research, I think there's a strong fit here.\n\nWould you have 20 minutes this week or next to walk through how we've helped similar SaaS revenue teams cut that research time significantly?\n\nLooking forward to connecting.\n\nBest,\n[Sales Rep Name]"
+    }
+  }
+}
