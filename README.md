@@ -2,6 +2,8 @@
 
 A lightweight sales and marketing operations workflow that turns raw inbound leads into a CRM-ready qualification file with lead scores, fit levels, qualification reasons, recommended next actions, and draft follow-up emails.
 
+Result: In a sample workflow, the system reduced estimated lead review time from 50 minutes to 5 minutes while identifying 3 high-fit leads out of 5.
+
 ## Live Demo
 
 Try the deployed Streamlit app here:
@@ -94,7 +96,7 @@ These files describe how the Streamlit MVP can be extended into an automation wo
 
 ## Automation Roadmap
 
-The current version works as a Streamlit MVP. The next planned layer is an n8n automation workflow.
+The current version includes a Streamlit MVP and demo-safe n8n automation assets. The next planned layer is connecting the workflow to live tools like Google Sheets, Gmail drafts, and Slack notifications.
 
 Planned automation flow:
 
