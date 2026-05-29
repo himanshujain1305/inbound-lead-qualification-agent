@@ -1,0 +1,168 @@
+{
+  "name": "Inbound Lead Qualification Agent - n8n Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "inbound-lead",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3e044e61-4842-4ae8-8504-37b54dbcce36",
+      "name": "Webhook",
+      "webhookId": "b8f74f9a-9e5c-46bc-a92a-7b2780622f29"
+    },
+    {
+      "parameters": {
+        "jsCode": "const lead = $input.first().json.body;\n\nlet score = 0;\nlet reasons = [];\n\nif ([\"100-200\", \"200-500\", \"500-1000\"].includes(lead.company_size)) {\n  score += 25;\n  reasons.push(\"Company size suggests a real sales/ops team with enough volume.\");\n} else if (lead.company_size === \"11-50\") {\n  score += 10;\n  reasons.push(\"Smaller company, possible fit but likely lower urgency.\");\n} else {\n  reasons.push(\"Very small company, likely limited buying capacity.\");\n}\n\nif ([\"VP\", \"Director\", \"Head\", \"Founder\"].some(title => lead.job_title.includes(title))) {\n  score += 25;\n  reasons.push(\"Lead has decision-maker or senior influencer title.\");\n}\n\nif ([\"$50k-$100k\", \"$25k-$50k\"].includes(lead.budget_range)) {\n  score += 25;\n  reasons.push(\"Budget range indicates potential buying capacity.\");\n} else {\n  reasons.push(\"Budget appears limited.\");\n}\n\nif ([\"Next 30 days\", \"Next 60 days\", \"This quarter\"].includes(lead.timeline)) {\n  score += 25;\n  reasons.push(\"Timeline suggests near-term intent.\");\n} else {\n  reasons.push(\"Timeline is vague or long-term.\");\n}\n\nlet fit_level = \"Low\";\nlet recommended_next_action = \"Keep in CRM, but do not prioritize immediate sales time.\";\n\nif (score >= 75) {\n  fit_level = \"High\";\n  recommended_next_action = \"Prioritize for sales outreach within 24 hours.\";\n} else if (score >= 40) {\n  fit_level = \"Medium\";\n  recommended_next_action = \"Add to nurture sequence and review manually.\";\n}\n\nconst draft_follow_up_email = `Subject: Quick idea for ${lead.company}\n\nHi ${lead.first_name},\n\nI noticed that your team may be dealing with: ${lead.pain_point}.\n\nA simple lead qualification workflow could help your team quickly identify which inbound leads need immediate sales attention, which leads should go into nurture, and which ones are lower priority.\n\nThis looks like the kind of workflow where faster lead qualification could save your team meaningful time.\n\nWould you be open to a quick 15-minute conversation this week?\n\nBest,\nHimanshu`;\n\nreturn [\n  {\n    json: {\n      ...lead,\n      lead_score: score,\n      fit_level,\n      qualification_reason: reasons.join(\" \"),\n      recommended_next_action,\n      draft_follow_up_email\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "f5c2878b-b330-4087-a538-45a4d779fadc",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c4354f1d-1659-4b06-bbd9-b5ba8e0dd246",
+              "leftValue": "={{ $json.fit_level }}",
+              "rightValue": "High",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        416,
+        0
+      ],
+      "id": "6ea936e2-37b1-4239-953b-1c040a2b3541",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "acc618c0-5abc-40d0-84ba-5bee923db85a",
+              "name": "notification_type",
+              "value": "High-fit lead alert",
+              "type": "string"
+            },
+            {
+              "id": "d65fce47-67c6-4114-ad62-ce0e0f00e47e",
+              "name": "sales_message",
+              "value": "High-fit inbound lead detected. Prioritize outreach within 24 hours.",
+              "type": "string"
+            },
+            {
+              "id": "4a393da6-1f72-4579-aba6-16b4595b4d1d",
+              "name": "owner",
+              "value": "Sales Team",
+              "type": "string"
+            },
+            {
+              "id": "3806e624-46d8-4d28-af37-698d94fdebba",
+              "name": "company",
+              "value": "={{ $json.company }}",
+              "type": "string"
+            },
+            {
+              "id": "b3014e44-cb81-4d66-a950-dbbc0157da65",
+              "name": "lead_score",
+              "value": "={{ $json.lead_score }}",
+              "type": "string"
+            },
+            {
+              "id": "21694604-79c4-4e87-a86f-2308acad7dce",
+              "name": "draft_email",
+              "value": "={{ $json.draft_follow_up_email }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        624,
+        -96
+      ],
+      "id": "b301d5d0-b551-4137-8f5e-0e57c7788c90",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "2816daee-f5d7-442a-a704-f564ff49e06b",
+  "meta": {
+    "instanceId": "fe83cafc784f62ad9775edac363527024b93accb10498ef26d6398d0f7c88755"
+  },
+  "id": "KnCcIVMK0CKHA03i",
+  "tags": []
+}
