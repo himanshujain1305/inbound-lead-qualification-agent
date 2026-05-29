@@ -1,5 +1,11 @@
+import sys
+from pathlib import Path
+
 import streamlit as st
 import pandas as pd
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(PROJECT_ROOT / "app"))
 
 from lead_scoring import qualify_leads
 from email_generator import generate_follow_up
@@ -17,7 +23,7 @@ uploaded_file = st.file_uploader("Upload inbound leads CSV", type=["csv"])
 
 if uploaded_file is not None:
     leads = pd.read_csv(uploaded_file)
-    temp_path = "data/uploaded_leads.csv"
+    temp_path = PROJECT_ROOT / "data" / "uploaded_leads.csv"
     leads.to_csv(temp_path, index=False)
 
     qualified_leads = qualify_leads(temp_path)
