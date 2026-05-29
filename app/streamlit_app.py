@@ -19,10 +19,50 @@ st.set_page_config(
 st.title("Inbound Lead Qualification Agent")
 st.write("From raw inbound leads to sales-ready qualification, next actions, and follow-up drafts.")
 
+st.markdown("### Try the demo")
+st.write("Download the sample CSV first, then upload it below to test the workflow.")
+
+sample_path = PROJECT_ROOT / "data" / "sample_leads.csv"
+
+with open(sample_path, "rb") as file:
+    st.download_button(
+        label="Download Sample Leads CSV",
+        data=file,
+        file_name="sample_leads.csv",
+        mime="text/csv"
+    )
+
+required_columns = [
+    "lead_id",
+    "first_name",
+    "last_name",
+    "company",
+    "job_title",
+    "company_size",
+    "industry",
+    "pain_point",
+    "budget_range",
+    "timeline",
+    "source"
+]
+
 uploaded_file = st.file_uploader("Upload inbound leads CSV", type=["csv"])
 
 if uploaded_file is not None:
     leads = pd.read_csv(uploaded_file)
+
+    missing_columns = [col for col in required_columns if col not in leads.columns]
+
+    if missing_columns:
+        st.error("Your CSV is missing required columns.")
+        st.write("Missing columns:")
+        st.write(missing_columns)
+
+        st.write("Required columns:")
+        st.write(required_columns)
+
+        st.stop()
+
     temp_path = PROJECT_ROOT / "data" / "uploaded_leads.csv"
     leads.to_csv(temp_path, index=False)
 
@@ -83,4 +123,4 @@ if uploaded_file is not None:
     )
 
 else:
-    st.info("Upload data/sample_leads.csv to test the workflow.")
+    st.info("Upload a CSV with the required columns, or download the sample file above to try the demo.")
