@@ -2,6 +2,12 @@
 
 A lightweight sales and marketing operations workflow that turns raw inbound leads into a CRM-ready qualification file with lead scores, fit levels, qualification reasons, recommended next actions, and draft follow-up emails.
 
+## Live Demo
+
+Try the deployed Streamlit app here:
+
+https://appapppy-3rvem8z6wmtgnkwcab4ryb.streamlit.app/
+
 ## Project Goal
 
 The goal is to simulate how a marketing or revenue operations team can reduce manual lead qualification work.
