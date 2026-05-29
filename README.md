@@ -77,6 +77,22 @@ It includes:
 - Recommended next action
 - Draft follow-up email
 
+## Automation Roadmap
+
+The current version works as a Streamlit MVP. The next planned layer is an n8n automation workflow.
+
+Planned automation flow:
+
+- Form submission
+- Lead data captured
+- Lead qualification logic runs
+- High-fit leads flagged
+- CRM or Google Sheet updated
+- Follow-up email draft generated
+- Sales notification sent
+
+Full workflow plan: `docs/n8n-workflow-plan.md`
+
 ## Next Improvements
 
 - Add n8n automation workflow
