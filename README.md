@@ -22,6 +22,10 @@ The workflow:
 6. Generates a draft follow-up email
 7. Produces a CRM-ready output file
 
+## App Screenshot
+
+![Inbound Lead Qualification Agent demo](screenshots/app-demo.png)
+
 ## Business Impact
 
 In the sample workflow:
