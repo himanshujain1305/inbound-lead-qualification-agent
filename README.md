@@ -88,6 +88,10 @@ This repo also includes an `n8n/` folder with demo-safe automation assets:
 
 These files describe how the Streamlit MVP can be extended into an automation workflow using a webhook, lead qualification logic, CRM or Google Sheets update, email draft generation, and high-fit lead notification.
 
+## n8n Workflow Screenshot
+
+![n8n successful execution](screenshots/n8n-successful-execution.png)
+
 ## Automation Roadmap
 
 The current version works as a Streamlit MVP. The next planned layer is an n8n automation workflow.
